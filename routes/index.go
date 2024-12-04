@@ -16,5 +16,6 @@ func RegisterRoutes(e *echo.Echo, db *gorm.DB) {
 	/*
 		Register routes
 	*/
+	RegisterBrandRoutes(r, c.BrandContainer.BrandController, db)
 	RegisterProductRoutes(r, c.ProductContainer.ProductController, db)
 }
