@@ -1,0 +1,45 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.out
+*.test
+
+# Go build cache
+/go-build/
+tmp
+assets
+
+# Vendor directory (if using `go mod vendor`)
+/vendor/
+
+# Environment and config files
+.env
+*.local
+*.config
+config-local.yml
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*~
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and debug
+*.log
+*.stackdump
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.backup
