@@ -2,8 +2,9 @@ package utils
 
 import (
 	"net/http"
-	"os"
 	"reflect"
+	"service-api/config"
+	"service-api/models"
 	"strings"
 	"time"
 
@@ -11,7 +12,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt/v5"
 )
 
 type CustomResponse struct {
@@ -29,9 +30,9 @@ type CustomResponseWithPagination struct {
 }
 
 type JwtCustomClaims struct {
-	ID   int         `json:"id"`
-	Data interface{} `json:"data"`
-	jwt.StandardClaims
+	ID   int           `json:"id"`
+	Data *models.Users `json:"data"`
+	jwt.RegisteredClaims
 }
 
 type ValidationErrorResponse struct {
@@ -44,20 +45,20 @@ func HashedPassword(password string) string {
 	return string(bytes)
 }
 
-func GenerateJWT(id int, data interface{}) (string, error) {
+func GenerateJWT(id int, data *models.Users, cfg *config.Config) (string, error) {
 	expires := time.Now().Add(time.Minute * 60).Unix()
 
 	claims := &JwtCustomClaims{
 		ID:   id,
 		Data: data,
-		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: expires,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Unix(expires, 0)),
 		},
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	tokenString, err := token.SignedString([]byte(os.Getenv("SECRET_KEY")))
+	tokenString, err := token.SignedString([]byte(cfg.JwtSecretKey))
 	if err != nil {
 		return "", err
 	}

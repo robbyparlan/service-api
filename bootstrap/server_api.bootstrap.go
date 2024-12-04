@@ -95,7 +95,7 @@ func ServerApi(wg *sync.WaitGroup) {
 	// e.Use(middleware.RateLimiterWithConfig(configRateLimiter))
 
 	// Register routes
-	routes.RegisterRoutes(e, db)
+	routes.RegisterRoutes(e, db, cfg)
 
 	// Start server
 	server := &http.Server{

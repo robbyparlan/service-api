@@ -27,6 +27,7 @@ type Config struct {
 	AppReadTimeout  int      `mapstructure:"APP_READ_TIME_OUT"`
 	AppWriteTimeout int      `mapstructure:"APP_WRITE_TIME_OUT"`
 	LogsDir         string   `mapstructure:"LOGS_DIR"`
+	JwtSecretKey    string   `mapstructure:"JWT_SECRET_KEY"`
 }
 
 // LoadConfig initializes and loads the configuration from a config.yml file
@@ -87,6 +88,7 @@ func bindEnvironmentVariables() {
 		"APP_PORT":                       "APP_PORT",
 		"APP_READ_TIME_OUT":              "APP_READ_TIME_OUT",
 		"APP_WRITE_TIME_OUT":             "APP_WRITE_TIME_OUT",
+		"JWT_SECRET_KEY":                 "JWT_SECRET_KEY",
 		"LOGS_DIR":                       "LOGS_DIR",
 	}
 

@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"service-api/config"
 	"service-api/container"
 	"service-api/utils"
 
@@ -9,13 +10,14 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func RegisterRoutes(e *echo.Echo, db *gorm.DB) {
+func RegisterRoutes(e *echo.Echo, db *gorm.DB, cfg *config.Config) {
 	c := container.NewContainer(db)
 	r := e.Group(utils.API_VERSION)
 
 	/*
 		Register routes
 	*/
-	RegisterBrandRoutes(r, c.BrandContainer.BrandController, db)
-	RegisterProductRoutes(r, c.ProductContainer.ProductController, db)
+	RegisterAuthRoutes(r, c.AuthContainer.AuthController, db)
+	RegisterBrandRoutes(r, c.BrandContainer.BrandController, db, cfg)
+	RegisterProductRoutes(r, c.ProductContainer.ProductController, db, cfg)
 }
