@@ -15,6 +15,7 @@ type ProductRepository interface {
 	DeleteProduct(db *gorm.DB, id int) error
 	FindProduct(db *gorm.DB, id int) (*models.Products, error)
 	CheckProduct(db *gorm.DB, productName string, brandId int) (*models.Products, error)
+	FindBrand(db *gorm.DB, id int) (*models.Brands, error)
 }
 
 type productRepository struct {
@@ -91,4 +92,9 @@ func (r *productRepository) FindProduct(db *gorm.DB, id int) (*models.Products, 
 func (r *productRepository) CheckProduct(db *gorm.DB, productName string, brandId int) (*models.Products, error) {
 	var product *models.Products
 	return product, r.db.Where("product_name = ?", productName).Where("brand_id = ?", brandId).First(&product).Error
+}
+
+func (r *productRepository) FindBrand(db *gorm.DB, id int) (*models.Brands, error) {
+	var brand *models.Brands
+	return brand, r.db.First(&brand, id).Error
 }

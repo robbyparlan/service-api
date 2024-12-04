@@ -30,6 +30,16 @@ func NewProductService(repo repository.ProductRepository, db *gorm.DB) ProductSe
 }
 
 func (s *productService) AddProduct(product *dtosProduct.CreateProductDTO) (*models.Products, error) {
+	// Check if brand exists before adding product
+	checkBrand, err := s.repo.FindBrand(s.db, product.BrandID)
+	if err != nil && err.Error() != "record not found" {
+		return nil, err
+	}
+
+	if checkBrand.ID == 0 {
+		return nil, &utils.CustomError{StatusCode: http.StatusNotFound, Message: "Brand not found", Err: nil}
+	}
+
 	// Check if product name already exists
 	data, err := s.repo.CheckProduct(s.db, strings.TrimSpace(product.ProductName), product.BrandID)
 	if err != nil && err.Error() != "record not found" {
@@ -65,6 +75,16 @@ func (s *productService) ListProduct(baseRequest *dtos.BaseRequestDTO) (*dtos.Ba
 }
 
 func (s *productService) UpdateProduct(product *dtosProduct.UpdateProductDTO) (*models.Products, error) {
+	// Check if brand exists before adding product
+	checkBrand, err := s.repo.FindBrand(s.db, product.BrandID)
+	if err != nil && err.Error() != "record not found" {
+		return nil, err
+	}
+
+	if checkBrand.ID == 0 {
+		return nil, &utils.CustomError{StatusCode: http.StatusNotFound, Message: "Brand not found", Err: nil}
+	}
+
 	// Check if product exists before updating it
 	checkProduct, err := s.repo.FindProduct(s.db, product.ID)
 	if err != nil {

@@ -1,0 +1,998 @@
+{
+	"info": {
+		"_postman_id": "f252f376-da12-481e-a35a-3d2659631127",
+		"name": "SERVICE-API",
+		"description": "**Service ini dilengkapi dengan JWT Token, setelah login pada response akan mendapatkan Parameter AccessToken dan untuk mengakses setiap endpoint cukup mengganti value pada tab Variable access_token ubah intial value dan current value**\n\n**Kredensial Akun Login :**\n\nRole Admin\n\nusername : admin\n\npassword : admin\n\nRole User\n\nusername : user\n\npassword : user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4524589"
+	},
+	"item": [
+		{
+			"name": "PRODUCT",
+			"item": [
+				{
+					"name": "API LIST PRODUCT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Page\": 1,\r\n    \"PageSize\": 10,\r\n    \"Search\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/product/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"list"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API LIST PRODUCT",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Page\": 1,\r\n    \"PageSize\": 10,\r\n    \"Search\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/product/list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "udaSGOLeOxySilegAYTVRdRePqILjHXw"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:30:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "697"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"Values\": [\n            {\n                \"ID\": 1,\n                \"CreatedAt\": \"2024-12-04T13:40:31.715015+07:00\",\n                \"UpdatedAt\": \"2024-12-04T20:30:03.642923+07:00\",\n                \"ProductName\": \"Lotion New\",\n                \"Price\": 250000,\n                \"Quantity\": 100,\n                \"BrandID\": 1,\n                \"BrandName\": \"unilever\"\n            },\n            {\n                \"ID\": 3,\n                \"CreatedAt\": \"2024-12-04T14:06:32.146255+07:00\",\n                \"UpdatedAt\": \"2024-12-04T14:06:32.146255+07:00\",\n                \"ProductName\": \"Lotion 1\",\n                \"Price\": 250000,\n                \"Quantity\": 100,\n                \"BrandID\": 1,\n                \"BrandName\": \"unilever\"\n            },\n            {\n                \"ID\": 6,\n                \"CreatedAt\": \"2024-12-04T20:29:27.291215+07:00\",\n                \"UpdatedAt\": \"2024-12-04T20:29:27.291215+07:00\",\n                \"ProductName\": \"Lotion 22\",\n                \"Price\": 250000,\n                \"Quantity\": 100,\n                \"BrandID\": 1,\n                \"BrandName\": \"unilever\"\n            }\n        ],\n        \"CurrentPage\": 1,\n        \"PageSize\": 10,\n        \"TotalItems\": 3,\n        \"TotalPages\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "API CREATE PRODUCT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ProductName\": \"Lotion 23\",\r\n    \"Price\": 250000,\r\n    \"Quantity\": 100,\r\n    \"BrandID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API CREATE PRODUCT",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductName\": \"Lotion 23\",\r\n    \"Price\": 250000,\r\n    \"Quantity\": 100,\r\n    \"BrandID\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/product",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"product"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "UFqZUEcccrpYtNARgFvFjBYdwWjLdWjM"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:38:57 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "232"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"ID\": 7,\n        \"CreatedAt\": \"2024-12-04T20:38:57.3635471+07:00\",\n        \"UpdatedAt\": \"2024-12-04T20:38:57.3635471+07:00\",\n        \"DeletedAt\": null,\n        \"ProductName\": \"Lotion 23\",\n        \"Price\": 250000,\n        \"Quantity\": 100,\n        \"BrandID\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "API UPDATE PRODUCT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 1,\r\n    \"ProductName\": \"Lotion New\",\r\n    \"Price\": 250000,\r\n    \"Quantity\": 100,\r\n    \"BrandID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API UPDATE PRODUCT",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ID\": 1,\r\n    \"ProductName\": \"Lotion New\",\r\n    \"Price\": 250000,\r\n    \"Quantity\": 100,\r\n    \"BrandID\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/product",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"product"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ZowlCxviEOjbUKjqptEIuTclWmyyVCTv"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:39:14 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "232"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"ID\": 1,\n        \"CreatedAt\": \"2024-12-04T13:40:31.715015+07:00\",\n        \"UpdatedAt\": \"2024-12-04T20:39:14.6506235+07:00\",\n        \"DeletedAt\": null,\n        \"ProductName\": \"Lotion New\",\n        \"Price\": 250000,\n        \"Quantity\": 100,\n        \"BrandID\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "API DELETE PRODUCT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API DELETE PRODUCT",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ID\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/product",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"product"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "lgsstTHlXcSpKbfOioXkjLtbrRTGkhME"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:39:32 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": null\n}"
+						}
+					]
+				}
+			],
+			"description": "**Pada API Product semua endpoint dilindungi jwt token dan role yang dapat akses ini adalah admin dan user**"
+		},
+		{
+			"name": "BRAND",
+			"item": [
+				{
+					"name": "API LIST BRAND",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Page\": 1,\r\n    \"PageSize\": 10,\r\n    \"Search\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/brand/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"brand",
+								"list"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API LIST BRAND",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Page\": 1,\r\n    \"PageSize\": 10,\r\n    \"Search\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/brand/list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brand",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "NjshLNOnVzKqKcZvxrKVjfDqgHWCbpmN"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:41:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "371"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"Values\": [\n            {\n                \"ID\": 1,\n                \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n                \"UpdatedAt\": \"0001-01-01T00:00:00Z\",\n                \"DeletedAt\": null,\n                \"BrandName\": \"unilever\"\n            },\n            {\n                \"ID\": 3,\n                \"CreatedAt\": \"2024-12-04T20:41:21.665285+07:00\",\n                \"UpdatedAt\": \"2024-12-04T20:41:21.665285+07:00\",\n                \"DeletedAt\": null,\n                \"BrandName\": \"OT\"\n            }\n        ],\n        \"CurrentPage\": 1,\n        \"PageSize\": 10,\n        \"TotalItems\": 2,\n        \"TotalPages\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "API CREATE BRAND",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BrandName\": \"OT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/brand",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"brand"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API CREATE BRAND",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BrandName\": \"OT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/brand",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brand"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "QdtLcCHuynTHhTTpLyqTMMcFHjOaGBRz"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:41:21 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"ID\": 3,\n        \"CreatedAt\": \"2024-12-04T20:41:21.665285+07:00\",\n        \"UpdatedAt\": \"2024-12-04T20:41:21.665285+07:00\",\n        \"DeletedAt\": null,\n        \"BrandName\": \"OT\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "API UPDATE BRAND",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 3,\r\n    \"BrandName\": \"Orang Tua\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/brand",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"brand"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API UPDATE BRAND",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ID\": 3,\r\n    \"BrandName\": \"Orang Tua\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/brand",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brand"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "uoufSThuaWUgKvRbbpLRLWVLkYIRvxNw"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:43:02 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"ID\": 3,\n        \"CreatedAt\": \"2024-12-04T20:41:21.665285+07:00\",\n        \"UpdatedAt\": \"2024-12-04T20:43:02.9882781+07:00\",\n        \"DeletedAt\": null,\n        \"BrandName\": \"Orang Tua\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "API DELETE BRAND",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/brand",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"brand"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RESPONSE API DELETE BRAND",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ID\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/brand",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brand"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "BaHKgISKEFkurCgRUnTlKNeOiUuCxHgQ"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 04 Dec 2024 13:43:44 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": null\n}"
+						}
+					]
+				}
+			],
+			"description": "**Pada API Brand semua endpoint dilindungi jwt token dan role yang dapat akses ini adalah admin**"
+		},
+		{
+			"name": "API LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"admin\",\r\n    \"Password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "RESPONSE API LOGIN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"admin\",\r\n    \"Password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "OvoRETgeObXjMKUPTcuAyPFVAikAkSWw"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 04 Dec 2024 13:44:02 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "551"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Status\": 200,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"User\": {\n            \"ID\": 1,\n            \"CreatedAt\": \"2024-12-03T21:05:46.755723+07:00\",\n            \"UpdatedAt\": \"2024-12-03T21:05:46.755723+07:00\",\n            \"DeletedAt\": null,\n            \"Username\": \"admin\",\n            \"Role\": \"admin\"\n        },\n        \"AccessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZGF0YSI6eyJJRCI6MSwiQ3JlYXRlZEF0IjoiMjAyNC0xMi0wM1QyMTowNTo0Ni43NTU3MjMrMDc6MDAiLCJVcGRhdGVkQXQiOiIyMDI0LTEyLTAzVDIxOjA1OjQ2Ljc1NTcyMyswNzowMCIsIkRlbGV0ZWRBdCI6bnVsbCwiVXNlcm5hbWUiOiJhZG1pbiIsIlJvbGUiOiJhZG1pbiJ9LCJleHAiOjE3MzMzMjM0NDJ9.2gWf7IelJKfqDYbP9L7HLdfsq_VLXSutm6pqDUKs9jk\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZGF0YSI6eyJJRCI6MSwiQ3JlYXRlZEF0IjoiMjAyNC0xMi0wM1QyMTowNTo0Ni43NTU3MjMrMDc6MDAiLCJVcGRhdGVkQXQiOiIyMDI0LTEyLTAzVDIxOjA1OjQ2Ljc1NTcyMyswNzowMCIsIkRlbGV0ZWRBdCI6bnVsbCwiVXNlcm5hbWUiOiJhZG1pbiIsIlJvbGUiOiJhZG1pbiJ9LCJleHAiOjE3MzMzMjIzMTV9.ZQ6nDSvCwp64BWUG44pwqUwjIvHDpMzGU_Gmjq1c4DI",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "http://localhost:5004",
+			"type": "string"
+		}
+	]
+}

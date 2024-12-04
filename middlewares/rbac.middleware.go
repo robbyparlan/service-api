@@ -17,13 +17,19 @@ func RbacMiddleware(cfg *config.Config, requiredRoles []string) echo.MiddlewareF
 		return func(c echo.Context) error {
 			authHeader := c.Request().Header.Get("Authorization")
 			if authHeader == "" {
-				return echo.NewHTTPError(http.StatusUnauthorized, "missing or invalid token")
+				return &utils.CustomError{
+					StatusCode: http.StatusUnauthorized,
+					Message:    "missing or invalid token",
+				}
 			}
 
 			// Extract the token part from Authorization header
 			tokenString := strings.TrimPrefix(authHeader, "Bearer ")
 			if tokenString == authHeader {
-				return echo.NewHTTPError(http.StatusUnauthorized, "missing bearer token")
+				return &utils.CustomError{
+					StatusCode: http.StatusUnauthorized,
+					Message:    "missing bearer token",
+				}
 			}
 
 			// Parse and validate the JWT token
@@ -33,13 +39,19 @@ func RbacMiddleware(cfg *config.Config, requiredRoles []string) echo.MiddlewareF
 			})
 
 			if err != nil || !token.Valid {
-				return echo.NewHTTPError(http.StatusUnauthorized, "invalid or expired token")
+				return &utils.CustomError{
+					StatusCode: http.StatusUnauthorized,
+					Message:    "invalid or expired token",
+				}
 			}
 
 			// Extract custom claims
 			claims, ok := token.Claims.(*utils.JwtCustomClaims)
 			if !ok || claims.Data.Role == "" {
-				return echo.NewHTTPError(http.StatusForbidden, "missing role in token")
+				return &utils.CustomError{
+					StatusCode: http.StatusUnauthorized,
+					Message:    "missing role in token",
+				}
 			}
 
 			// Check if user's role is allowed
