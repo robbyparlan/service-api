@@ -119,14 +119,34 @@ func ServerApi(wg *sync.WaitGroup) {
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
 
 	<-quit
-	log.Println("Shutting down server...")
+	log.Println("Shutdown signal received. Shutting down server...")
 
+	// Set a timeout for the shutdown process
+	timeoutFunc := time.AfterFunc(15*time.Second, func() {
+		log.Printf("timeout %d seconds has been elapsed, force exit", 15*time.Second)
+		os.Exit(0)
+	})
+
+	defer timeoutFunc.Stop()
+
+	// Attempt a graceful shutdown
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	if err := server.Shutdown(ctx); err != nil {
-		log.Fatalf("Server forced to shutdown: %v", err)
+	if err := e.Shutdown(ctx); err != nil {
+		log.Printf("Error shutting down server: %v", err)
 	}
+	log.Println("Server is shutting down completed")
+
+	// Close the database connection
+	sqlDB, err := db.DB()
+	if err != nil {
+		log.Printf("Error getting SQL DB: %v", err)
+	}
+	if err := sqlDB.Close(); err != nil {
+		log.Printf("Error closing database connection: %v", err)
+	}
+	log.Println("Database connection closing completed")
 
 	log.Println("Server exited gracefully")
 }
