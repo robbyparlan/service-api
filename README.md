@@ -10,6 +10,7 @@ Ini adalah Service yang menggunakan [Echo Framework](https://echo.labstack.com/)
 - [Role Base Access Control](#role-base-access-control)
 - [Object Relation Mapping](#object-relation-mapping)
 - [Logging](#logging)
+- [Gracefully Shutdown](#gracefully-shutdown)
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
 - [API Documentation](#api-documentation)
@@ -46,6 +47,10 @@ Service ini menggunakan [GORM](https://gorm.io/) sebagai Object-Relational Mappi
 ## Logging
 
 Service ini menggunakan system `Logging` yang disimpan pada file secara periodik kemudian mencatat baik Request API maupun Response API untuk memudahkan analisa issue / bug.
+
+## Gracefully Shutdown
+
+Gracefully shutdown adalah proses penghentian aplikasi atau sistem secara tertib dan teratur, sehingga semua aktivitas yang sedang berlangsung dapat diselesaikan dengan benar, resource dapat dibersihkan, dan data tidak hilang atau rusak.
 
 ### Requirements
 

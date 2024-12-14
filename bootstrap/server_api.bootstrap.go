@@ -1,9 +1,13 @@
 package bootstrap
 
 import (
+	"context"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
 	"sync"
+	"syscall"
 	"time"
 
 	"service-api/config"
@@ -97,11 +101,32 @@ func ServerApi(wg *sync.WaitGroup) {
 	// Register routes
 	routes.RegisterRoutes(e, db, cfg)
 
-	// Start server
+	// Start server in a goroutine
 	server := &http.Server{
 		Addr:         ":" + cfg.AppPort,
 		ReadTimeout:  time.Duration(cfg.AppReadTimeout) * time.Second,
 		WriteTimeout: time.Duration(cfg.AppWriteTimeout) * time.Second,
 	}
-	e.Logger.Fatal(e.StartServer(server))
+
+	go func() {
+		if err := e.StartServer(server); err != nil && err != http.ErrServerClosed {
+			log.Fatalf("Error starting server: %v", err)
+		}
+	}()
+
+	// Graceful shutdown logic
+	quit := make(chan os.Signal, 1)
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
+
+	<-quit
+	log.Println("Shutting down server...")
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(ctx); err != nil {
+		log.Fatalf("Server forced to shutdown: %v", err)
+	}
+
+	log.Println("Server exited gracefully")
 }
