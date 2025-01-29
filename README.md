@@ -3,7 +3,7 @@
 Ini adalah Service yang menggunakan [Echo Framework](https://echo.labstack.com/) di Go
 
 ## List of Contents
-- [Jawaban Essay](#jawaban-essay)
+<!-- - [Jawaban Essay](#jawaban-essay) -->
 - [Overview](#overview)
 - [Request Validator](#request-validator)
 - [JWT Token Middleware](#jwt-token-middleware)
@@ -15,12 +15,12 @@ Ini adalah Service yang menggunakan [Echo Framework](https://echo.labstack.com/)
 - [Getting Started](#getting-started)
 - [API Documentation](#api-documentation)
 
-## Jawaban Essay
+<!-- ## Jawaban Essay
 1. `Project Review` adalah proses untuk mengevaluasi tim terhadap kinerja tim pada project yang sedang dikerjakan ataupun yang sudah selesai, lalu `Project Planning` adalah tahap - tahap yang direncanakan untuk project yang akan dibuat ataupun yang sedang berjalan, biasa nya saya menggunakan tools seperti ClickUp, Trello ataupun Redmine untuk memonitor dan review kinerja tim.
 
 2. Kebetulan saya belum berkesempatan mengelola vps AWS EC2, apabila pemahaman tentang `Load Balancer` adalah komponen untuk mendistribusikan lalu lintas jaringan ke service backend dan saya biasa nya menggunakan Nginx. Kemudian `Security Group` adalah firewall virtual untuk mengontrol lalu lintas masuk dan keluar, kalau pada vps Digital Ocean ada Dashboard tersendiri untuk mengaturnya, apabila langsung dari server bisa menggunakan UFW (Uncomplicated Firewall) untuk mengontrol port maupun IP Address.
 
-3. Monitor penggunaan memory dengan runtime/pprof setelah di analisa dan mendapatkan fungsi atau library yang tidak direlease oleh memory maka langkah selanjutkan analisa kode tersebut apakah dari variable global, gourutine yang bocor ataupun tidak menutup fungsi defer close lalu perbaiki masalah nya dan monitor kembali bisa menggunakan htop ataupun runtime/pprof.
+3. Monitor penggunaan memory dengan runtime/pprof setelah di analisa dan mendapatkan fungsi atau library yang tidak direlease oleh memory maka langkah selanjutkan analisa kode tersebut apakah dari variable global, gourutine yang bocor ataupun tidak menutup fungsi defer close lalu perbaiki masalah nya dan monitor kembali bisa menggunakan htop ataupun runtime/pprof. -->
 
 ## Overview
 

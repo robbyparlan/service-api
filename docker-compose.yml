@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  echo-server:
+    build:
+      context: .  # Build Dockerfile dari direktori saat ini
+      dockerfile: Dockerfile
+    container_name: svc-api
+    ports:
+      - "5004:5004"  # Expose port 8080 dari container ke host
+    # restart: unless-stopped  # Restart container kecuali dihentikan secara manual

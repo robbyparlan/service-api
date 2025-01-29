@@ -1,8 +1,8 @@
 # DATABASE CONFIG
 DATABASE:
-  DB_HOST: 127.0.0.1
-  DB_USER: "admin"
-  DB_PASSWORD: "admin"
+  DB_HOST: "host.docker.internal"
+  DB_USER: "dbadmin"
+  DB_PASSWORD: "dbadmin123!@#"
   DB_NAME: "ecommerce"
   DB_PORT: 5432
   DB_SSL: "disable"
@@ -14,7 +14,7 @@ DATABASE:
 APP_PORT: "5004"
 APP_READ_TIME_OUT: 30
 APP_WRITE_TIME_OUT: 30
-JWT_SECRET_KEY: "b7dafe06d41d764ed6b1a325ffde7b7dafe06d41sbc"
+JWT_SECRET_KEY: "b7dafe06d41d764ed6b1a325ffde7b7dafe06d41bc"
 
 # ASSETS CONFIG
 LOGS_DIR: "assets/logs/"
